@@ -1,0 +1,17 @@
+- hosts: cloud
+  become: true
+  tasks:
+    - name: copy SSH config file to VM
+      copy:
+        src: files/config
+        dest: /home/vagrant/.ssh/
+    - name: Make project directory
+      file: 
+        path: /home/vagrant/project
+        state: directory
+        owner: vagrant
+        group: vagrant
+    - name: Copy docker-compose file to project directory
+      copy:
+        src: files/docker-compose.yml
+        dest: /home/vagrant/project/

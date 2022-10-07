@@ -1,0 +1,5 @@
+Host *
+  StrictHostKeyChecking no
+Host hostname
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null

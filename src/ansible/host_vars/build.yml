@@ -1,0 +1,17 @@
+# build.yml
+---
+jenkins_package_state: latest
+jenkins_hostname: localhost
+jenkins_http_port: 8080
+jenkins_admin_username: admin
+jenkins_admin_password: root
+
+jenkins_plugins:
+  - publish-over
+  - publish-over-ssh
+jenkins_plugins_install_dependencies: true
+jenkins_plugins_state: latest
+
+java_packages:
+  - openjdk-8-jdk
+  - openjdk-11-jdk

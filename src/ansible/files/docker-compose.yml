@@ -1,0 +1,31 @@
+version: '2.0'
+services:
+  app:
+    build:
+      context: csharp-ch-9-exercise-1
+      dockerfile: Dockerfile
+    image: dotnet:app
+    restart: always
+    container_name: app
+    ports:
+      - 80:80
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: db
+    environment:
+      SA_PASSWORD: "yourStrong(!)Password"
+      ACCEPT_EULA: "Y"
+  portainer:
+    image: portainer/portainer-ce
+    restart: always
+    container_name: Portainer
+    ports:
+      - 9000:9000
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  db:
+  portainer_data:
